@@ -1,0 +1,70 @@
+body {
+	background: url(../../almacenamiento/bg/banner-aprende.jpg) no-repeat;
+	width: 100%;
+	background-size: cover;
+}
+
+/* Estilo para pantalla pequeña */
+@media screen and (max-width: 768px) {
+	body {
+		background: url(../../almacenamiento/bg/bg-menu-movil.jpg) no-repeat;
+	}
+}
+
+.letra-5 {
+	font-size: 5em;
+}
+
+.letra-4 {
+	font-size: 4em;
+}
+
+.letra-3 {
+	font-size: 3em;
+}
+
+.letra-2 {
+	font-size: 2em;
+}
+
+.letra-1 {
+	font-size: 1em;
+}
+
+
+.mt-10 {
+	margin-top: 10%;
+}
+
+.movimiento {
+	-webkit-transition:all .9s ease;
+	/* Safari y Chrome */
+	-moz-transition:all .9s ease;
+	/* Firefox */
+	-o-transition:all .9s ease;
+	/* IE 9 */
+	-ms-transition:all .9s ease;
+	/* Opera */
+}
+
+.movimiento:hover {
+	-webkit-transform: scale(1.25);
+	-moz-transform: scale(1.25);
+	-ms-transform: scale(1.25);
+	-o-transform: scale(1.25);
+	transform: scale(1.25);
+}
+
+.progress-bar {
+	transition: width 0.5s;
+}
+
+.bg-meteoro {
+	background: url(../../almacenamiento/bg/bg-neptuno.jpg) no-repeat;
+	width: 100%;
+	background-size: cover;
+}
+
+.bg-glass {
+	background-color: rgba(0, 0, 0, 0);
+}

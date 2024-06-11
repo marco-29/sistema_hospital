@@ -1,0 +1,36 @@
+body {
+	background: url(../../almacenamiento/bg/bg-urano.jpg) no-repeat;
+	background-size: cover;
+}
+
+/* Estilo para pantalla pequeña */
+@media screen and (max-width: 768px) {
+	body {
+		background: url(../../almacenamiento/bg/index-neptuno-movil.jpg) no-repeat;
+	}
+}
+
+.letra-5 {
+	font-size: 5em;
+}
+
+.letra-4 {
+	font-size: 4em;
+}
+
+.letra-3 {
+	font-size: 3em;
+}
+
+.letra-2 {
+	font-size: 2em;
+}
+
+.letra-1 {
+	font-size: 1em;
+}
+
+
+.mt-10 {
+	margin-top: 10%;
+}

@@ -1,0 +1,82 @@
+body {
+	background: url(../../almacenamiento/bg/bg-login.jpg) no-repeat;
+}
+
+/* Estilo para pantalla pequeña */
+@media screen and (max-width: 768px) {
+	body {
+		background: url(../../almacenamiento/bg/bg-login-movil.jpg) no-repeat;
+	}
+}
+
+.letra-5 {
+	font-size: 5em;
+}
+
+.letra-4 {
+	font-size: 4em;
+}
+.letra-3 {
+	font-size: 3em;
+}
+.letra-2 {
+	font-size: 2em;
+}
+.letra-1 {
+	font-size: 1em;
+}
+
+
+.mt-10 {
+	margin-top: 10%;
+}
+
+.imagen-logo {
+	width: 200%;
+}
+
+.boton-index {
+	background-color: #0764a691;
+	border-radius: 50px;
+	border: none;
+	color: white;
+	font-size: 3em;
+}
+
+/* Estilos específicos para dispositivos móviles */
+@media screen and (max-width: 768px) {
+
+	/* Redefine los estilos de los botones para dispositivos móviles */
+	.boton-index {
+		background-color: #e4e4e49f;
+		border-radius: 50px;
+		border: none;
+		color: rgb(0, 0, 0);
+		font-size: 1.5em;
+	}
+}
+
+.boton-login {
+	background-color: #022D55;
+	border-radius: 50px;
+	border: none;
+	color: white;
+	font-size: 1.6em;
+}
+
+/* Estilos específicos para dispositivos móviles */
+@media screen and (max-width: 768px) {
+
+	/* Redefine los estilos de los botones para dispositivos móviles */
+	.boton-login {
+		background-color: #022D55;
+		border-radius: 50px;
+		border: none;
+		color: rgb(255, 255, 255);
+	}
+}
+
+.bg-luna {
+	background: url(../../almacenamiento/bg/bg-luna.png) center;
+	border-radius: 15px;
+}
