@@ -21,7 +21,7 @@ class Registrar extends CI_Controller
 	 */
 	public function index()
 	{
-		$this->load->view('layouts/header-mascara');
+		$this->load->view('layouts/header');
 		$this->load->view('registrar/index');
 		$this->load->view('layouts/footer');
 	}
@@ -32,10 +32,9 @@ class Registrar extends CI_Controller
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|max_length[240]');
 		$this->form_validation->set_rules('usuario', 'Usuario', 'required|max_length[50]|is_unique[usuarios.usuario]');
 		$this->form_validation->set_rules('password', 'Contraseña', 'required');
-		$this->form_validation->set_rules('nombre_tutor', 'Nombre de tutor', 'trim|required|max_length[240]');
 
 		if ($this->form_validation->run() == false) {
-			$this->load->view('layouts/header-mascara');
+			$this->load->view('layouts/header');
 			$this->load->view('registrar/index');
 			$this->load->view('layouts/footer');
 		} else {
@@ -45,36 +44,21 @@ class Registrar extends CI_Controller
 			$key_1 = "usuarios-" . date("Y-m-d-H-i-s", strtotime($fecha_registro));
 			$identificador_1 = hash("crc32b", $key_1);
 
-			$key_2 = "progreso-" . date("Y-m-d-H-i-s", strtotime($fecha_registro));
-			$identificador_2 = hash("crc32b", $key_2);
-
 			// Preparar datos para hacer el insert en la bd
 			$data = array(
 				'identificador' => $identificador_1,
 				'nombre' => $this->input->post('nombre'),
 				'usuario' => $this->input->post('usuario'),
-				// 'contrasena_hash' => password_hash($this->input->post('contrasena'), PASSWORD_DEFAULT),
+				// 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
 				'password' => $this->input->post('password'),
-				'nombre_tutor' => $this->input->post('nombre_tutor'),
 				'fecha_registro' => date('Y-m-d H:i:s')
 			);
 
 			if ($this->db->insert('usuarios', $data)) {
 				$query = $this->db->query('SELECT * FROM `usuarios` WHERE BINARY `usuario` = ' . $this->db->escape($data['usuario']) . '');
 				$data_usuario = $query->row();
-				$this->_preparar_datos_sesion($data_usuario->usuario, $data_usuario->nombre, $data_usuario->identificador, $data_usuario->nombre_tutor, NULL, '');
-			}
-
-			// Preparar datos para hacer el insert en la bd
-			$data_1 = array(
-				'identificador' => $identificador_2,
-				'usuario_identificador' => $identificador_1,
-				'progreso_aprende' => '0',
-				'fecha_registro' => date('Y-m-d H:i:s')
-			);
-
-			if ($this->db->insert('usuarios_progreso', $data_1)) {
-				redirect('menu');
+				$this->_preparar_datos_sesion($data_usuario->usuario, $data_usuario->nombre, $data_usuario->identificador, NULL, '');
+				redirect('pacientes');
 			}
 
 			$this->load->view('registrar/registrar_usuario', array('mensaje_error' => 'Ha ocurrido un error al intentar realizar el registro, por favor inténtelo más tarde'));
@@ -88,16 +72,14 @@ class Registrar extends CI_Controller
 	 * @param string $usuario
 	 * @param string $nombre
 	 * @param string $identificador
-	 * @param string $nombre_tutor
 	 * @return void
 	 */
-	private function _preparar_datos_sesion($usuario, $nombre, $identificador, $nombre_tutor)
+	private function _preparar_datos_sesion($usuario, $nombre, $identificador)
 	{
 		$sesion_data = array(
 			'usuario' => $usuario,
 			'nombre' => $nombre,
 			'identificador' => $identificador,
-			'nombre_tutor' => $nombre_tutor,
 			'en_sesion' => true,
 		);
 

@@ -13,7 +13,7 @@ class Login extends CI_Controller
 
 	public function index()
 	{
-		$this->load->view('layouts/header-mascara');
+		$this->load->view('layouts/header');
 		$this->load->view('login/index');
 		$this->load->view('layouts/footer');
 		
@@ -28,7 +28,7 @@ class Login extends CI_Controller
 		if ($this->form_validation->run() == false) {
 
 			if ($this->session->userdata('en_sesion')) {
-				redirect('menu');
+				redirect('pacientes');
 			}
 
 			$this->load->view("login/index");
@@ -59,7 +59,7 @@ class Login extends CI_Controller
                 null
             );
 
-            redirect('menu');
+            redirect('pacientes');
 
             $this->load->view("login/index");
 		}
@@ -78,16 +78,14 @@ class Login extends CI_Controller
 	 * @param string $usuario
 	 * @param string $nombre
 	 * @param string $identificador
-	 * @param string $nombre_tutor
 	 * @return void
 	 */
-	private function _preparar_datos_sesion($usuario, $nombre, $identificador, $nombre_tutor)
+	private function _preparar_datos_sesion($usuario, $nombre, $identificador)
 	{
 		$sesion_data = array(
 			'usuario' => $usuario,
 			'nombre' => $nombre,
 			'identificador' => $identificador,
-			'nombre_tutor' => $nombre_tutor,
 			'en_sesion' => true,
 		);
 
